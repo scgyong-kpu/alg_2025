@@ -3,8 +3,8 @@ from data_unsorted import numbers
 # numbers = numbers[:1000]
 
 from random import randint, seed
-# from pyvisalgo import BubbleSortVisualizer as Visualizer
-from pyvisalgo import Dummy as Visualizer
+from pyvisalgo import BubbleSortVisualizer as Visualizer
+# from pyvisalgo import Dummy as Visualizer
 # Visualizer 가 나타나지 않게 하려면 Dummy 를 쓰면 된다.
 
 def main():
@@ -13,7 +13,9 @@ def main():
   end = count - 1
   if True: # 들여쓰기를 위해 쓴다
     for i in range(end):
+      vis.compare(i, i+1)
       if array[i] > array[i+1]:
+        vis.swap(i, i+1)        
         array[i], array[i+1] = array[i+1], array[i]
   print('after :', array)
 
