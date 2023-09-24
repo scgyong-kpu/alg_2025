@@ -1,12 +1,7 @@
 # from data_unsorted import numbers
 from data_unsorted_a_lot import numbers
-<<<<<<< HEAD:week03_ch6/ch2_7_radix_sort_lsd.py
-# from pyvisalgo import RadixSortLsdVisualizer as Visualizer
+from pyvisalgo import RadixSortLsdVisualizer as Visualizer
 # from pyvisalgo import Dummy as Visualizer
-=======
-from vis import RadixSortLsdVisualizer as Visualizer
-# from vis import Dummy as Visualizer
->>>>>>> 4640279 (ch27rl-10. RadixSortLsdVisualizer 사용으로 원상복귀):src/ch2_7_radix_sort_lsd.py
 from time import time
 from random import randint, seed, shuffle
 from math import log10, ceil
