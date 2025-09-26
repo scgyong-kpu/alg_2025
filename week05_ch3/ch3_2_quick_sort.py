@@ -14,15 +14,9 @@ def main():
 def quickSort(left, right): #q=inclusive
   if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
   if left >= right: return         # 정렬할 것이 없으면 할 일이 없다
-  if right == left + 1:
-    # vis.compare(left, right)
-    if array[left] > array[right]:
-      # vis.swap(left, right)
-      array[left], array[right] = array[right], array[left]
-    return  
-  # if right < left + 4:
-  #   # insertionSort(left, right)
-  #   return
+  if right < left + 4:
+    insertionSort(left, right)
+    return
   vis.push(left, right)
   pivot = partition(left, right)   # pivot 위치를 결정해 온다
   vis.set_pivot(pivot)
