@@ -13,18 +13,27 @@ def main():
 def quickSort(left, right): #q=inclusive
   # if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
   if left >= right: return         # 정렬할 것이 없으면 할 일이 없다
-  if right == left + 1:
-    # vis.compare(left, right)
-    if array[left] > array[right]:
-      # vis.swap(left, right)
-      array[left], array[right] = array[right], array[left]
-    return  
+  if right < left + 4:
+    insertionSort(left, right)
+    return
   # vis.push(left, right)
   pivot = partition(left, right)   # pivot 위치를 결정해 온다
   # vis.set_pivot(pivot)
   quickSort(left, pivot-1)  # pivot 보다 왼쪽 그룹을 다시 quickSort 한다
   quickSort(pivot+1, right) # pivot 보다 오른쪽 그룹을 다시 quickSort 한다
   # vis.pop()
+
+def insertionSort(left, right): #right=inclusive
+  for i in range(left + 1, right + 1):
+    v = array[i]
+    # vis.mark_end(i, v)
+    j = i - 1
+    while j >= left and array[j] > v:
+      # vis.shift(j)
+      array[j+1] = array[j]
+      j -= 1
+    # vis.insert(i, j+1)
+    array[j+1] = v
 
 def partition(left, right):
 
@@ -76,33 +85,33 @@ def partition(left, right):
   return q  # 결정된 pivot 의 위치를 리턴한다
 
 ''' 성능 측정
-# QuickSort           Normal 2-Swap
-count=100     elapsed= 0.000  0.000 
-count=1000    elapsed= 0.003  0.002 
-count=2000    elapsed= 0.005  0.005 
-count=3000    elapsed= 0.007  0.007 
-count=4000    elapsed= 0.010  0.010 
-count=5000    elapsed= 0.013  0.013 
-count=6000    elapsed= 0.015  0.015 
-count=7000    elapsed= 0.021  0.021 
-count=8000    elapsed= 0.021  0.024 
-count=9000    elapsed= 0.023  0.026 
-count=10000   elapsed= 0.030  0.031 
-count=15000   elapsed= 0.043  0.042 
-count=20000   elapsed= 0.059  0.059 
-count=30000   elapsed= 0.096  0.103 
-count=40000   elapsed= 0.125  0.116 
-count=50000   elapsed= 0.156  0.141 
-count=100000  elapsed= 0.419  0.344 
-count=200000  elapsed= 0.690  0.730 
-count=300000  elapsed= 1.115  1.087 
-count=400000  elapsed= 1.670  1.540 
-count=500000  elapsed= 2.235  2.172 
-count=1000000 elapsed= 4.496  4.747 
-count=2000000 elapsed= 9.740  9.629 
-count=3000000 elapsed=15.635 15.486 
-count=4000000 elapsed=20.053 19.965 
-count=5000000 elapsed=26.747 25.844 
+# QuickSort           Normal 2-Swap  4-Ins 
+count=100     elapsed= 0.000  0.000  0.000 
+count=1000    elapsed= 0.003  0.002  0.002 
+count=2000    elapsed= 0.005  0.005  0.005 
+count=3000    elapsed= 0.007  0.007  0.007 
+count=4000    elapsed= 0.010  0.010  0.010 
+count=5000    elapsed= 0.013  0.013  0.013 
+count=6000    elapsed= 0.015  0.015  0.015 
+count=7000    elapsed= 0.021  0.021  0.020 
+count=8000    elapsed= 0.021  0.024  0.022 
+count=9000    elapsed= 0.023  0.026  0.024 
+count=10000   elapsed= 0.030  0.031  0.025 
+count=15000   elapsed= 0.043  0.042  0.041 
+count=20000   elapsed= 0.059  0.059  0.053 
+count=30000   elapsed= 0.096  0.103  0.090 
+count=40000   elapsed= 0.125  0.116  0.117 
+count=50000   elapsed= 0.156  0.141  0.156 
+count=100000  elapsed= 0.419  0.344  0.351 
+count=200000  elapsed= 0.690  0.730  0.644 
+count=300000  elapsed= 1.115  1.087  1.031 
+count=400000  elapsed= 1.670  1.540  1.450 
+count=500000  elapsed= 2.235  2.172  2.051 
+count=1000000 elapsed= 4.496  4.747  4.017 
+count=2000000 elapsed= 9.740  9.629  8.934 
+count=3000000 elapsed=15.635 15.486 14.271 
+count=4000000 elapsed=20.053 19.965 18.831 
+count=5000000 elapsed=26.747 25.844 24.089 
 '''
 if __name__ == '__main__':
   seed('Hello')
