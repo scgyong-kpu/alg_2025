@@ -53,6 +53,14 @@ def partition(left, right):
     # 이제 p 이하에는 pivot 보다 작은 값만, q 이상에는 pivot 보다 큰 값만 있다
 
 
+  # 이 코드는 partition() 함수의 Loop 를 모두 빠져 나온 후에 실행되는 영역이다
+  # pivot 값의 위치를 확정시킨다
+  # pivot 값은 왼쪽 그룹 중에 가장 큰 값이므로 q 위치로 옮긴다
+  # left 가 q 와 같다면 pivot 보다 작은것이 하나도 없다는 뜻이므로 옮길 필요가 없다
+  if left != q:
+    vis.swap(left, q, True)
+    array[left], array[q] = array[q], array[left]
+
 if __name__ == '__main__':
   seed('Hello')
   vis = Visualizer('Quick Sort')
