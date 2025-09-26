@@ -1,4 +1,4 @@
-# from pyvisalgo import QuickSortVisualizer as Visualizer
+from pyvisalgo import QuickSortVisualizer as Visualizer
 # from pyvisalgo import Dummy as Visualizer
 from time import time
 from random import randint, seed, shuffle
@@ -7,33 +7,33 @@ def main():
   # print('before:', array)
   count = len(array)
   quickSort(0, count-1)
-  insertionSort(0, count-1)
+  # insertionSort(0, count-1)
 
   # print('after :', array)
 
 def quickSort(left, right): #q=inclusive
-  # if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
+  if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
   if left >= right: return         # 정렬할 것이 없으면 할 일이 없다
-  if right < left + 4:
-    # insertionSort(left, right)
-    return
-  # vis.push(left, right)
+  # if right < left + 4:
+  #   # insertionSort(left, right)
+  #   return
+  vis.push(left, right)
   pivot = partition(left, right)   # pivot 위치를 결정해 온다
-  # vis.set_pivot(pivot)
+  vis.set_pivot(pivot)
   quickSort(left, pivot-1)  # pivot 보다 왼쪽 그룹을 다시 quickSort 한다
   quickSort(pivot+1, right) # pivot 보다 오른쪽 그룹을 다시 quickSort 한다
-  # vis.pop()
+  vis.pop()
 
 def insertionSort(left, right): #right=inclusive
   for i in range(left + 1, right + 1):
     v = array[i]
-    # vis.mark_end(i, v)
+    vis.mark_end(i, v)
     j = i - 1
     while j >= left and array[j] > v:
-      # vis.shift(j)
+      vis.shift(j)
       array[j+1] = array[j]
       j -= 1
-    # vis.insert(i, j+1)
+    vis.insert(i, j+1)
     array[j+1] = v
 
 def partition(left, right):
@@ -46,31 +46,31 @@ def partition(left, right):
   while True:             # p < q 인 동안 하게 된다. 하지만 중간에 break 하므로 while True 를 쓰자
     while True:           # 왼쪽에서 pivot 보다 큰 값을 찾을때까지
       p += 1
-      # vis.set_p(p)
+      vis.set_p(p)
       if q < p: break
-      # if p <= right: vis.compare(pi, p)
+      if p <= right: vis.compare(pi, p)
       if p > right or array[p] > pivot: break 
       # 왼쪽에서 pivot 보다 큰 값을 찾았다
 
-      # if p <= right: vis.set_left(p)
+      if p <= right: vis.set_left(p)
 
     while True:           # 오른쪽에서 pivot 보다 작은 값을 찾을때까지
       q -= 1
-      # vis.set_q(q)
+      vis.set_q(q)
       if q < p: break
-      # if q >= left: vis.compare(pi, q)
+      if q >= left: vis.compare(pi, q)
       if q < left or array[q] < pivot: break
       # 오른쪽에서 pivot 보다 작은 값을 찾았다
 
-      # if q >= left: vis.set_right(q)
+      if q >= left: vis.set_right(q)
 
     if p >= q: break      # p 와 q 가 만날때까지 계속 진행한다
                           # 즉, p >= q 라면, 교환할 값이 없다는 뜻이다
 
-    # vis.set_left(p)
-    # vis.set_right(q)
+    vis.set_left(p)
+    vis.set_right(q)
 
-    # vis.swap(p, q)
+    vis.swap(p, q)
     array[p], array[q] = array[q], array[p] 
     # 이제 p 이하에는 pivot 보다 작은 값만, q 이상에는 pivot 보다 큰 값만 있다
 
@@ -80,7 +80,7 @@ def partition(left, right):
   # pivot 값은 왼쪽 그룹 중에 가장 큰 값이므로 q 위치로 옮긴다
   # left 가 q 와 같다면 pivot 보다 작은것이 하나도 없다는 뜻이므로 옮길 필요가 없다
   if left != q:
-    # vis.swap(left, q, True)
+    vis.swap(left, q, True)
     array[left], array[q] = array[q], array[left]
 
   return q  # 결정된 pivot 의 위치를 리턴한다
@@ -117,28 +117,7 @@ count=5000000 elapsed=26.747 25.844 24.089
 if __name__ == '__main__':
   seed('Hello')
 
-  counts = [ 
-  # 10,20,30,50,100
-    100, 1000, 2000, 3000, 4000, 5000, 
-    6000, 7000, 8000, 9000, 10000, 15000, 
-    20000, 30000, 40000, 50000,
-    100000, 200000, 300000, 400000, 500000,
-    1000000, 2000000, 3000000, 4000000, 5000000,
-  ]
-  for count in counts:
-    startedOn = time()
-    array = [ randint(1, count) for _ in range(count) ]
-    creation = time() - startedOn
-    # shuffle(array)
-    # print('before:', array)
-    startedOn = time()
-    main()
-    elapsed = time() - startedOn
-    # print('after: ', array)
-    print(f'{count=:<7d} {elapsed=:6.3f} {creation=:5.2f}')    
-  exit() 
-
-  # vis = Visualizer('Quick Sort')
+  vis = Visualizer('Quick Sort')
   while True:
     count = randint(20, 40)
     array = [ randint(1, 99) for _ in range(count) ]
