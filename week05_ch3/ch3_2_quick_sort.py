@@ -21,7 +21,7 @@ def partition(left, right):
 
   p, q = left, right + 1  # 후보선수들 출전준비
 
-  if True:                # 나중에 while loop 가 될 예정이다
+  while True:             # p < q 인 동안 하게 된다. 하지만 중간에 break 하므로 while True 를 쓰자
     while True:           # 왼쪽에서 pivot 보다 큰 값을 찾을때까지
       p += 1
       vis.set_p(p)
@@ -29,6 +29,8 @@ def partition(left, right):
       if p <= right: vis.compare(pi, p)
       if p > right or array[p] > pivot: break 
       # 왼쪽에서 pivot 보다 큰 값을 찾았다
+
+      if p <= right: vis.set_left(p)
 
     while True:           # 오른쪽에서 pivot 보다 작은 값을 찾을때까지
       q -= 1
@@ -38,12 +40,18 @@ def partition(left, right):
       if q < left or array[q] < pivot: break
       # 오른쪽에서 pivot 보다 작은 값을 찾았다
 
+      if q >= left: vis.set_right(q)
+
+    if p >= q: break      # p 와 q 가 만날때까지 계속 진행한다
+                          # 즉, p >= q 라면, 교환할 값이 없다는 뜻이다
+
+    vis.set_left(p)
+    vis.set_right(q)
+
     vis.swap(p, q)
     array[p], array[q] = array[q], array[p] 
     # 이제 p 이하에는 pivot 보다 작은 값만, q 이상에는 pivot 보다 큰 값만 있다
 
-    vis.set_left(p)
-    vis.set_right(q)
 
 if __name__ == '__main__':
   seed('Hello')
