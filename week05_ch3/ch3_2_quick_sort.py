@@ -38,6 +38,10 @@ def partition(left, right):
       if q < left or array[q] < pivot: break
       # 오른쪽에서 pivot 보다 작은 값을 찾았다
 
+    vis.swap(p, q)
+    array[p], array[q] = array[q], array[p] 
+    # 이제 p 이하에는 pivot 보다 작은 값만, q 이상에는 pivot 보다 큰 값만 있다
+
     vis.set_left(p)
     vis.set_right(q)
 
