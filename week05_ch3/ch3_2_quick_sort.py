@@ -10,8 +10,8 @@ def main():
   count = len(array)
 
   vis.push(0, count-1)
-  partition(0, count-1)
-
+  pivot = partition(0, count-1)
+  vis.set_pivot(pivot)
   print('after :', array)
 
 def partition(left, right):
@@ -60,6 +60,8 @@ def partition(left, right):
   if left != q:
     vis.swap(left, q, True)
     array[left], array[q] = array[q], array[left]
+
+  return q  # 결정된 pivot 의 위치를 리턴한다
 
 if __name__ == '__main__':
   seed('Hello')
