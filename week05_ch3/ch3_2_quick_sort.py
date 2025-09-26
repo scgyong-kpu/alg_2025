@@ -13,6 +13,12 @@ def main():
 def quickSort(left, right): #q=inclusive
   # if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
   if left >= right: return         # 정렬할 것이 없으면 할 일이 없다
+  if right == left + 1:
+    # vis.compare(left, right)
+    if array[left] > array[right]:
+      # vis.swap(left, right)
+      array[left], array[right] = array[right], array[left]
+    return  
   # vis.push(left, right)
   pivot = partition(left, right)   # pivot 위치를 결정해 온다
   # vis.set_pivot(pivot)
@@ -70,32 +76,33 @@ def partition(left, right):
   return q  # 결정된 pivot 의 위치를 리턴한다
 
 ''' 성능 측정
-count=100     elapsed= 0.000 creation= 0.00
-count=1000    elapsed= 0.003 creation= 0.00
-count=2000    elapsed= 0.005 creation= 0.00
-count=3000    elapsed= 0.007 creation= 0.00
-count=4000    elapsed= 0.010 creation= 0.00
-count=5000    elapsed= 0.013 creation= 0.00
-count=6000    elapsed= 0.015 creation= 0.00
-count=7000    elapsed= 0.021 creation= 0.01
-count=8000    elapsed= 0.021 creation= 0.01
-count=9000    elapsed= 0.023 creation= 0.01
-count=10000   elapsed= 0.030 creation= 0.01
-count=15000   elapsed= 0.043 creation= 0.01
-count=20000   elapsed= 0.059 creation= 0.01
-count=30000   elapsed= 0.096 creation= 0.02
-count=40000   elapsed= 0.125 creation= 0.03
-count=50000   elapsed= 0.156 creation= 0.03
-count=100000  elapsed= 0.419 creation= 0.07
-count=200000  elapsed= 0.690 creation= 0.14
-count=300000  elapsed= 1.115 creation= 0.20
-count=400000  elapsed= 1.670 creation= 0.26
-count=500000  elapsed= 2.235 creation= 0.32
-count=1000000 elapsed= 4.496 creation= 0.63
-count=2000000 elapsed= 9.740 creation= 1.25
-count=3000000 elapsed=15.635 creation= 2.06
-count=4000000 elapsed=20.053 creation= 2.60
-count=5000000 elapsed=26.747 creation= 3.55
+# QuickSort           Normal 2-Swap
+count=100     elapsed= 0.000  0.000 
+count=1000    elapsed= 0.003  0.002 
+count=2000    elapsed= 0.005  0.005 
+count=3000    elapsed= 0.007  0.007 
+count=4000    elapsed= 0.010  0.010 
+count=5000    elapsed= 0.013  0.013 
+count=6000    elapsed= 0.015  0.015 
+count=7000    elapsed= 0.021  0.021 
+count=8000    elapsed= 0.021  0.024 
+count=9000    elapsed= 0.023  0.026 
+count=10000   elapsed= 0.030  0.031 
+count=15000   elapsed= 0.043  0.042 
+count=20000   elapsed= 0.059  0.059 
+count=30000   elapsed= 0.096  0.103 
+count=40000   elapsed= 0.125  0.116 
+count=50000   elapsed= 0.156  0.141 
+count=100000  elapsed= 0.419  0.344 
+count=200000  elapsed= 0.690  0.730 
+count=300000  elapsed= 1.115  1.087 
+count=400000  elapsed= 1.670  1.540 
+count=500000  elapsed= 2.235  2.172 
+count=1000000 elapsed= 4.496  4.747 
+count=2000000 elapsed= 9.740  9.629 
+count=3000000 elapsed=15.635 15.486 
+count=4000000 elapsed=20.053 19.965 
+count=5000000 elapsed=26.747 25.844 
 '''
 if __name__ == '__main__':
   seed('Hello')
