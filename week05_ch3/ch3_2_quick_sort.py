@@ -38,8 +38,12 @@ def insertionSort(left, right): #right=inclusive
 
 def partition(left, right):
 
-  pi = left               # pi = Pivot Index
+  pi = randint(left, right) # pi = Pivot Index
   pivot = array[pi]       # pivot = Pivot Value
+
+  vis.compare(left, pi)
+  vis.swap(left, pi)
+  array[left], array[pi] = array[pi], array[left]
 
   p, q = left, right + 1  # 후보선수들 출전준비
 
@@ -48,7 +52,7 @@ def partition(left, right):
       p += 1
       vis.set_p(p)
       if q < p: break
-      if p <= right: vis.compare(pi, p)
+      if p <= right: vis.compare(left, p)
       if p > right or array[p] > pivot: break 
       # 왼쪽에서 pivot 보다 큰 값을 찾았다
 
@@ -58,7 +62,7 @@ def partition(left, right):
       q -= 1
       vis.set_q(q)
       if q < p: break
-      if q >= left: vis.compare(pi, q)
+      if q >= left: vis.compare(left, q)
       if q < left or array[q] < pivot: break
       # 오른쪽에서 pivot 보다 작은 값을 찾았다
 
