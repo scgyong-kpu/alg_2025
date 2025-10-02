@@ -14,6 +14,9 @@ public:
     os << name << '(' << x << ',' << y << ')';
     return os;
   }
+  bool operator<(const City &other) {
+    return this->name < other.name;
+  }
 };
 ostream &operator <<(ostream &os, const City &c) {
   return c.print(os);
@@ -32,11 +35,17 @@ City cities[] = {
     City("Tweet", 1253, 403), City("Zilch", 1289, 29),  City("React", 296, 659),  City("Fiche", 787, 278),
 };
 
+// bool City_compare_name_asc(const City &a, const City &b)
+// {
+//   return a.name < b.name;
+// }
+
 int main(void) 
 {
   int n_cities = sizeof(cities) / sizeof(cities[0]);
   printCities(cities, n_cities);
   // sort here by name
+  sort(cities, cities + n_cities); //, City_compare_name_asc);
   printCities(cities, n_cities);
   // sort here by y coordinate
   printCities(cities, n_cities);
