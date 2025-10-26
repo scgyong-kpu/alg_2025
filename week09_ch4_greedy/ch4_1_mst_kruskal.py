@@ -38,9 +38,11 @@ def main():
 
   while copy:
     u,v,w = copy.pop(0)
+    print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     c1, c2 = cities[u], cities[v]
     total_cost += w
     mst.append((u, v))
+    union(u, v)
     vis.append(u, v, w)    
 
 if __name__ == '__main__':
