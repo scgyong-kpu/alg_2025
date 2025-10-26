@@ -16,7 +16,7 @@ def main():
   mst = []
   total_cost = 0
 
-  if True:
+  while copy:
     u,v,w = copy.pop(0)
     c1, c2 = cities[u], cities[v]
     total_cost += w
