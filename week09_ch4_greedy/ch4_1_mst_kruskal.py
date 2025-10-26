@@ -10,5 +10,5 @@ if __name__ == '__main__':
     vis.draw()
     again = vis.end()
     if not again: break
-    dsc.random()
+    dsc.next()
 
