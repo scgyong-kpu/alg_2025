@@ -3,13 +3,25 @@ from pyvisalgo import KruskalVisualizer as Visualizer
 import data_sample_cities as dsc
 
 def main():
-  # sorted_edges = sorted(edges, key=lambda e: e[2])
-  # print(sorted_edges)
   vis.draw()
   vis.wait(1000)
+
+  # sorted_edges = sorted(edges, key=lambda e: e[2])
+  # print(sorted_edges)
+  n_cities = len(cities)
   edges.sort(key=lambda e: e[2])
+  copy = edges[:] # deep copy. copy = edge 로 하면 안 된다.
   vis.sort_edges()
+
   mst = []
+  total_cost = 0
+
+  if True:
+    u,v,w = copy.pop(0)
+    c1, c2 = cities[u], cities[v]
+    total_cost += w
+    mst.append((u, v))
+    vis.append(u, v, w)    
 
 if __name__ == '__main__':
   vis = Visualizer('MST - Kruskal')
