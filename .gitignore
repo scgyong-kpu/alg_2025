@@ -1,3 +1,10 @@
+# Visualizer configuration file
+_config.json
+
+# Excel temp
+~$*.xlsx
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
