@@ -24,16 +24,17 @@ def main():
   global roots
   roots = [x for x in range(n_cities)] 
   
-  sorted_edges = sorted(edges, key=lambda e: e[2])
-  print(sorted_edges)
-  # edges.sort(key=lambda e: e[2])
-  # copy = edges[:] # deep copy. copy = edge 로 하면 안 된다.
+  # sorted_edges = sorted(edges, key=lambda e: e[2])
+  # print(sorted_edges)
+  edges.sort(key=lambda e: e[2])
+  copy = edges[:] # deep copy. copy = edge 로 하면 안 된다.
   vis.sort_edges()
 
   mst = []
   total_cost = 0
 
-  for u, v, w in sorted_edges:
+  while len(mst) < n_cities - 1 and copy:
+    u,v,w = copy.pop(0)
     print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     if find_root(u) == find_root(v): 
       vis.ignore(u, v, w)
@@ -43,7 +44,6 @@ def main():
     mst.append((u, v))
     union(u, v)
     vis.append(u, v, w)
-    if len(mst) == n_cities - 1: break
 
   vis.draw()
 
