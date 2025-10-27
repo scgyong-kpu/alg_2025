@@ -38,6 +38,7 @@ def main():
 
   while copy:
     u,v,w = copy.pop(0)
+    if find_root(u) == find_root(v): continue
     print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     c1, c2 = cities[u], cities[v]
     total_cost += w
