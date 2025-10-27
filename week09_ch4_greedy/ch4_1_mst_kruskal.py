@@ -6,6 +6,8 @@ def union(u, v):
   global roots
   uroot = find_root(u)
   vroot = find_root(v)
+  if uroot > vroot:
+    uroot,vroot = vroot,uroot
   roots[vroot] = uroot
 
 def find_root(u):
@@ -38,10 +40,10 @@ def main():
 
   while copy:
     u,v,w = copy.pop(0)
+    print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     if find_root(u) == find_root(v): 
       vis.ignore(u, v, w)
       continue
-    print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     c1, c2 = cities[u], cities[v]
     total_cost += w
     mst.append((u, v))
