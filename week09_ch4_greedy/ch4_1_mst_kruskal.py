@@ -12,13 +12,8 @@ def union(u, v):
 
 def find_root(u):
   if u != roots[u]:
-    return find_root(roots[u])
+    roots[u] = find_root(roots[u]) # 경로압축
   return roots[u]
-
-# def find_root(u):
-#   if u != roots[u]:
-#     roots[u] = find_root(roots[u]) # 경로압축
-#   return roots[u]
 
 def main():
   vis.draw()
