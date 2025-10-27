@@ -38,13 +38,17 @@ def main():
 
   while copy:
     u,v,w = copy.pop(0)
-    if find_root(u) == find_root(v): continue
+    if find_root(u) == find_root(v): 
+      vis.ignore(u, v, w)
+      continue
     print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     c1, c2 = cities[u], cities[v]
     total_cost += w
     mst.append((u, v))
     union(u, v)
-    vis.append(u, v, w)    
+    vis.append(u, v, w)
+
+  vis.draw()
 
 if __name__ == '__main__':
   vis = Visualizer('MST - Kruskal')
