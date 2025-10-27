@@ -33,7 +33,7 @@ def main():
   mst = []
   total_cost = 0
 
-  while copy:
+  while len(mst) < n_cities - 1 and copy:
     u,v,w = copy.pop(0)
     print(f'find_root({u})={find_root(u)} find_root({v})={find_root(v)}')
     if find_root(u) == find_root(v): 
