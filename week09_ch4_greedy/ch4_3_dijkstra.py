@@ -41,6 +41,10 @@ def main():
 
   completed = set()
 
+  vis.append(0, start_city_index, start_city_index)
+  vis.wait(1000)
+  vis.fix(start_city_index, start_city_index)
+
   global mst
   mst = []
   while weights:
