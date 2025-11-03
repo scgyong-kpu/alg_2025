@@ -1,3 +1,7 @@
+import math
+from pyvisalgo.base import *
+from pyvisalgo.welzl import welzl
+
 # t = 0.0 ~ 2.0 사이로 변화하는 값임. 1 이면 가운데임
 def lerp_2d(xy1, xy2, t=1):
   # x1,y1 = xy1[0], xy1[1]
