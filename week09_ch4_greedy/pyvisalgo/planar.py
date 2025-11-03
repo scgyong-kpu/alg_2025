@@ -352,9 +352,9 @@ class KruskalVisualizer(PlanarVisualizer):
 
 class PrimVisualizer(KruskalVisualizer):
   grayed_city_context = {
-    'city_body_color': Color.WhiteSmoke,
-    'city_line_color': Color.LightGray,
-    'city_name_color': Color.LightGray,
+    'city_body_color': Color.Gray,
+    'city_line_color': Color.DarkGray,
+    'city_name_color': Color.DarkGray,
     'shows_city_index': True,
     # 'shows_city_coord': True,
   }
@@ -366,9 +366,10 @@ class PrimVisualizer(KruskalVisualizer):
     # 'shows_city_coord': True,
   }
   candidate_edge_context = {
-    'edge_line_color': Color.LightGray,
+    'edge_line_color': Color.Silver,
     'edge_value_color': Color.SkyBlue,
     'shows_edge_value': True,
+    'edge_line_width': 6,
   }
   bctx_updated = {
     'body_color': Color.LightGreen,
@@ -376,8 +377,19 @@ class PrimVisualizer(KruskalVisualizer):
     'text_color': Color.text,
   }
   def_city_context = grayed_city_context
-  def_edge_context = KruskalVisualizer.grayed_edge_context
-  fixed_edge_context = KruskalVisualizer.def_edge_context
+  def_edge_context =  {
+    'edge_line_color': Color.Silver,
+    'edge_value_color': Color.Silver,
+    'shows_edge_value': True,
+  }
+
+  fixed_edge_context = {
+    'edge_line_color': Color.DarkCyan,
+    'edge_value_color': Color.DarkGreen,
+    'edge_line_width': 10,
+    'shows_edge_value': True,
+  }
+
   fixing_edge_context = {
     'edge_line_color': Color.Crimson,
     'edge_value_color': Color.DarkRed,
