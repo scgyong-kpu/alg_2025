@@ -26,14 +26,18 @@ class Floyd:
       6: { 5:436, 4:314, 3:586, },
     }
     self.INF = float('inf')
-    self.dgraph = [
-      [ self.INF for _ in range(self.n_cities) 
-      ] for _ in range(self.n_cities) 
-    ]
-    self.dirs = [
-      [ -1 for _ in range(self.n_cities) 
-      ] for _ in range(self.n_cities)
-    ]
+    self.dgraph = {
+      i: dict()
+      for i in range(self.n_cities) 
+    }
+    self.dirs = {
+      i: dict()
+      for i in range(self.n_cities)
+    }
+
+    print(self.dgraph, self.dirs)
+    print("----- Temporarily exits here -----")
+    exit()
 
 
   def start(self):
