@@ -719,6 +719,7 @@ def draw_all_directed_edges(dgraph, linecolor=3):
         draw_directed_edge(u, v, w, linecolor=linecolor)
 
 def draw_directed_edge_table():
+  if not hasattr(ctx.data, 'dgraph'): return
   dgraph = ctx.data.dgraph
   n_cities = len(the_cities)
   table_x = max_screen_x + 2 * ROOTS_HEIGHT

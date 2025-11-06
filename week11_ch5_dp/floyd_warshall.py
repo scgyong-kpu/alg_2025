@@ -25,6 +25,9 @@ class Floyd:
       5: { 1:374, 2:311, 4:223, 6:539, },
       6: { 5:436, 4:314, 3:586, },
     }
+
+
+  def start(self):
     INF = float('inf')
     self.dgraph = {
       i: { j:INF for j in range(self.n_cities) }
@@ -34,11 +37,6 @@ class Floyd:
       i: { j:-1 for j in range(self.n_cities) }
       for i in range(self.n_cities)
     }
-
-    print(self.dgraph, self.dirs)
-
-
-  def start(self):
     for u, d in self.input.items():
       for v, w in d.items():
         self.dgraph[u][v] = w
