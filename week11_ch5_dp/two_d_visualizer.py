@@ -76,7 +76,9 @@ def init(title):
 def clear(color = (255,255,255)):
   screen.fill(color)
 
+SPEEDS = [ 200, 1, 2, 3, 4, 5, 10, 20, 50, 100 ]
 def wait(millis):
+  global speed
   millis = int(millis / speed)
   if millis < WAIT_ONE_FRAME_MILLIS: millis = WAIT_ONE_FRAME_MILLIS
 
@@ -97,6 +99,8 @@ def wait(millis):
       elif e.type == pg.KEYUP and e.key == pg.K_SPACE:
         if pg.key.get_mods() & pg.KMOD_LSHIFT == 0:
           loop = False
+      elif e.type == pg.KEYDOWN and e.key >= pg.K_0 and e.key <= pg.K_9:
+        speed = SPEEDS[e.key - pg.K_0]
       elif e.type == pg.MOUSEMOTION:
         if hasattr(ctx, 'on_mouse_motion'):
           ctx.on_mouse_motion()
