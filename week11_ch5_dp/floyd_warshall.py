@@ -39,7 +39,12 @@ class Floyd:
 
 
   def start(self):
-    pass
+    for u, d in self.input.items():
+      for v, w in d.items():
+        self.dgraph[u][v] = w
+        self.dirs[u][v] = v
+        # vis.floyd_draw()
+        vis.floyd_update(u, v, msec=200)
 
     vis.floyd_update()
 

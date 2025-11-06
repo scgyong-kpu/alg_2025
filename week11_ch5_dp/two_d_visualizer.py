@@ -681,7 +681,7 @@ def floyd_compare(u, v, k):
   update_display()
   wait(msec)
 
-def floyd_update(u=None, v=None, k=None):
+def floyd_update(u=None, v=None, k=None, msec=1000):
   ctx.u, ctx.v, ctx.k = u, v, k
   ctx.update = True
   # print('floyd_update:', k)
@@ -690,7 +690,7 @@ def floyd_update(u=None, v=None, k=None):
     value = ctx.data.dgraph[u][v]
     draw_directed_edge(u, v, value=value, linecolor=ROOTS_BODY_COLOR_UPDATE)
   update_display()
-  wait(1000)
+  wait(msec)
 
 def floyd_draw():
   clear()
