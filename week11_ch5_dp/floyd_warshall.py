@@ -28,14 +28,15 @@ class Floyd:
 
 
   def start(self):
+    N = self.n_cities
     INF = float('inf')
     self.dgraph = {
-      i: { j:INF for j in range(self.n_cities) }
-      for i in range(self.n_cities) 
+      i: { j:INF for j in range(N) }
+      for i in range(N) 
     }
     self.dirs = {
-      i: { j:-1 for j in range(self.n_cities) }
-      for i in range(self.n_cities)
+      i: { j:-1 for j in range(N) }
+      for i in range(N)
     }
     for u, d in self.input.items():
       for v, w in d.items():
@@ -43,6 +44,10 @@ class Floyd:
         self.dirs[u][v] = v
         # vis.floyd_draw()
         vis.floyd_update(u, v, msec=200)
+
+    for u in range(N):
+      self.dgraph[u][u] = 0
+      vis.floyd_update(u, u, msec=200)
 
     vis.floyd_update()
 
