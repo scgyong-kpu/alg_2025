@@ -49,6 +49,18 @@ class Floyd:
       self.dgraph[u][u] = 0
       vis.floyd_update(u, u, msec=200)
 
+    k = 0
+    if True:
+      for i in range(N):
+        for j in range(N):
+          vis.floyd_compare(i, j, k)
+          dist = self.dgraph[i][j]
+          via = self.dgraph[i][k] + self.dgraph[k][j]
+          if via < dist:
+            self.dgraph[i][j] = via
+            self.dirs[i][j] = k
+            vis.floyd_update(i, j, k)
+
     vis.floyd_update()
 
 
