@@ -49,8 +49,7 @@ class Floyd:
       self.dgraph[u][u] = 0
       vis.floyd_update(u, u, msec=200)
 
-    k = 0
-    if True:
+    for k in range(N):
       for i in range(N):
         for j in range(N):
           vis.floyd_compare(i, j, k)
