@@ -25,13 +25,13 @@ class Floyd:
       5: { 1:374, 2:311, 4:223, 6:539, },
       6: { 5:436, 4:314, 3:586, },
     }
-    self.INF = float('inf')
+    INF = float('inf')
     self.dgraph = {
-      i: dict()
+      i: { j:INF for j in range(self.n_cities) }
       for i in range(self.n_cities) 
     }
     self.dirs = {
-      i: dict()
+      i: { j:-1 for j in range(self.n_cities) }
       for i in range(self.n_cities)
     }
 
