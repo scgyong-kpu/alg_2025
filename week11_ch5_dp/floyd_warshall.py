@@ -36,8 +36,6 @@ class Floyd:
     }
 
     print(self.dgraph, self.dirs)
-    print("----- Temporarily exits here -----")
-    exit()
 
 
   def start(self):
