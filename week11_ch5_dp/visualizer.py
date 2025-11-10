@@ -1,7 +1,7 @@
 import pygame as pg
 import json
 
-CONFIG_FILE = 'config.json'
+CONFIG_FILE = '_config.json'
 INITIAL_SCREEN_SIZE = [ 960, 540 ]
 INITIAL_FONT_SIZE = 12
 
